@@ -7,11 +7,10 @@ function buildDom(htmlString) {
 }
 
 function main() {
-    var game; // instance of the Game
-    var splashScreen; // Start Screen
-    var gameOverScreen; // Game Over Screen
+    var game;
+    var splashScreen;
+    var gameOverScreen;
 
-    // -- splash screen
 
     function createSplashScreen() {
         splashScreen = buildDom(`
@@ -34,7 +33,6 @@ function main() {
         splashScreen.remove();
     }
 
-    // -- game screen
 
     function createGameScreen() {
         var gameScreen = buildDom(`
@@ -63,7 +61,7 @@ function main() {
         game.removeGameScreen();
     }
 
-    // -- game over screen
+
 
     function createGameOverScreen(score) {
         gameOverScreen = buildDom(`
@@ -89,18 +87,18 @@ function main() {
         }
     }
 
-    // -- Setting the game state
+
 
     function startGame() {
         removeSplashScreen();
-        // later we need to add clearing of the gameOverScreen
+
         removeGameOverScreen();
 
         game = new Game();
         game.gameScreen = createGameScreen();
 
         game.start();
-        // End the game
+
         game.passGameOverCallback(function() {
             gameOver(game.score);
         });
@@ -111,7 +109,6 @@ function main() {
         createGameOverScreen(score);
     }
 
-    // -- initialize Splash screen on initial start
 
     createSplashScreen();
 }

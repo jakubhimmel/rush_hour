@@ -10,42 +10,36 @@ function Game() {
     this.score = 0;
 }
 
-// Append canvas to the DOM, create a biker and start the Canvas loop
+
 Game.prototype.start = function() {
-    // Save reference to canvas and its container. Create ctx
+
     this.canvasContainer = document.querySelector('.canvas-container');
     this.canvas = this.gameScreen.querySelector('canvas');
     this.ctx = this.canvas.getContext('2d');
 
-    // Save reference to the score and lives elements
     this.livesElement = this.gameScreen.querySelector('.lives .value');
     this.scoreElement = this.gameScreen.querySelector('.score .value');
 
-    // Set the canvas dimensions to match the parent `.canvas-container`
+
     this.containerWidth = this.canvasContainer.offsetWidth;
     this.containerHeight = this.canvasContainer.offsetHeight;
     this.canvas.setAttribute('width', this.containerWidth);
     this.canvas.setAttribute('height', this.containerHeight);
 
-    // Create a new biker for the current game
+
     this.biker = new Biker(this.canvas, 3);
 
-    // Add event listener for moving the biker
-    this.handleKeyDown = function(event) {
-        if (event.keyCode === 38) {
-            this.biker.setDirection('up');
-        } else if (event.keyCode === 40) {
-            this.biker.setDirection('down');
+    this.keyPress = function(event) {
+        if (event.keyCode === 37) {
+            this.biker.moveLeft();
+        } else if (event.keyCode === 39) {
+            this.biker.moveRight();
         }
     };
 
-    // Any function provided to eventListener
-    // is always called by window (this === window)!
-    // So, we have to bind `this` to the `game` object,
-    // to prevent it from pointing to the `window` object
-    document.body.addEventListener('keydown', this.handleKeyDown.bind(this));
 
-    // Start the canvas requestAnimationFrame loop
+    document.body.addEventListener('keydown', this.keyPress.bind(this));
+
     this.startLoop();
 };
 
@@ -57,8 +51,8 @@ Game.prototype.startLoop = function() {
 
         // 1. Create new enemies randomly
         // if (Math.random() > 0.98) {
-        //     var randomY = this.canvas.height * Math.random();
-        //     this.enemies.push(new Enemy(this.canvas, randomY, 5));
+        //     var randomX = this.canvas.width * Math.random();
+        //     this.car.push(new Car(this.canvas, randomX, 5));
         // }
 
         // 2. Check if biker had hit any enemy (check all enemies)
@@ -69,10 +63,10 @@ Game.prototype.startLoop = function() {
 
         // 4. Move existing enemies
         // 5. Check if any enemy is going of the screen
-        this.enemies = this.enemies.filter(function(enemy) {
-            enemy.updatePosition();
-            return enemy.isInsideScreen();
-        });
+        // this.enemies = this.enemies.filter(function(enemy) {
+        //     enemy.updatePosition();
+        //     return enemy.isInsideScreen();
+        // });
 
         // 2. CLEAR THE CANVAS
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -134,8 +128,8 @@ Game.prototype.removeGameScreen = function() {
     this.gameScreen.remove();
 };
 
-Game.prototype.updateGameStats = function() {
-    this.score += 1;
-    this.livesElement.innerHTML = this.biker.lives;
-    this.scoreElement.innerHTML = this.score;
-};
+// Game.prototype.updateGameStats = function() {
+//     this.score += 1;
+//     this.livesElement.innerHTML = this.biker.lives;
+//     this.scoreElement.innerHTML = this.score;
+// };

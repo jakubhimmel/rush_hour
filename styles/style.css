@@ -43,7 +43,7 @@ body {
 
 @media (min-width: 768px) {
     .container {
-        max-width: 728px;
+        max-width: 768px;
         margin: 0 auto;
     }
 }
@@ -82,6 +82,7 @@ body {
 
 .game .canvas-container {
     flex: 1;
+    background: rgb(112, 112, 112);
 }
 
 
@@ -89,5 +90,5 @@ body {
 
 body {
     font-family: 'Press Start 2P', cursive;
-    font-size: 20zpx;
+    font-size: 20px;
 }
