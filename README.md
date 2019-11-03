@@ -24,13 +24,30 @@ CANVAS, Manage to avoid the obstacles.
 createSplashScreen(){
 }
 
+removeSplashScreen() {
+}
+
+
 createGameScreen(){
+}
+
+removeGameScreen() {
 }
 
 createGameOverScreen(){
 }
 
+removeGameOverScreen() {
+}
+
+startGame() {
+}
+
+gameOver() {
+}
+
 bildDome(){}
+
 </pre>
 
 <h4>game.js</h4>
@@ -114,11 +131,17 @@ Enemy.prototype.isInsideScreen = function() {
 
 <h3>Task</h3>
 <ul>
+   <li>Main - constructer</li>
   <li>Main - createSplashScreen</li>
+    <li>Main - removeSplashScreen</li>
   <li>Main - createGameScreen</li>
+    <li>Main - removeGameScreen</li>
   <li>Main - createGameOverScreen</li>
-  <li>Main - bildDome</li>
-  <li>Game - buildCanvas</li>
+    <li>Main - removeGameOverScreen</li>
+    <li>Main - startGame</li>
+    <li>Main - gameOver</li>
+  <li>Main - buildDome</li>
+  <li>Game - constructer</li>
   <li>Game - startLoop</li>
   <li>Game - checkCollisions</li>
   <li>Game - CheckIfFullLine</li>
