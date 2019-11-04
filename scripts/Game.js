@@ -47,49 +47,59 @@ Game.prototype.startLoop = function() {
     var loop = function() {
 
         if (Math.random() > 0.98) {
+
             var randomX = (this.canvas.width * 0.9 - this.canvas.width * 0.1) * Math.random();
             var newCar = new Car(this.canvas, randomX, 5);
 
+            for (let i = 0, i < cars.length; i++) {
+                if (newCar.x === cars[i].x) { continue };
 
-            this.cars.push(newCar);
-        }
-
-        this.biker.handleScreenCollision();
-
+                else { this.cars.push(newCar) }
 
 
-
-        console.log(this.cars);
-
-        this.checkCollisions();
+            }
 
 
 
+            // this.cars.push(newCar)
+        };
+    }
 
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-        this.biker.draw();
-
-        this.cars.forEach(function(item) {
-            item.updatePosition();
-            item.draw();
-        });
-
-        this.cars = this.cars.filter(function(car) {
-
-            return car.isInsideScreen();
-        })
+    this.biker.handleScreenCollision();
 
 
 
-        if (!this.gameIsOver) {
-            window.requestAnimationFrame(loop);
-        }
 
-        this.updateGameStats();
-    }.bind(this);
 
-    window.requestAnimationFrame(loop);
+    this.checkCollisions();
+
+
+
+
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+    this.biker.draw();
+
+    this.cars.forEach(function(item) {
+        item.updatePosition();
+        item.draw();
+    });
+
+    this.cars = this.cars.filter(function(car) {
+
+        return car.isInsideScreen();
+    })
+
+
+
+    if (!this.gameIsOver) {
+        window.requestAnimationFrame(loop);
+    }
+
+    this.updateGameStats();
+}.bind(this);
+
+window.requestAnimationFrame(loop);
 };
 
 Game.prototype.checkCollisions = function() {
