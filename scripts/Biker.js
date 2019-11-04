@@ -33,12 +33,11 @@ Biker.prototype.didCollide = function(car) {
     var carTop = car.y;
     var carBottom = car.y + car.size;
 
-    var crossRight = carLeft <= bikerRight && carLeft >= bikerLeft;
-    var crossLeft = carRight >= bikerLeft && carRight <= bikerRight;
-    var crossTop = carBottom >= bikerTop && carBottom <= bikerBottom;
-    var crossBottom = carTop <= bikerBottom && carTop >= bikerTop;
+    var crossHorizontal = carLeft <= bikerRight && carRight >= bikerLeft;
+    var crossVertical = carBottom >= bikerTop && carTop <= bikerBottom;
 
-    if ((crossRight || crossLeft) && (crossBottom || crossTop)) {
+
+    if (crossHorizontal && crossVertical) {
         return true;
     }
     return false;
