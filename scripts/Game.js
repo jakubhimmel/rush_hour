@@ -48,8 +48,13 @@ Game.prototype.startLoop = function() {
 
         if (Math.random() > 0.98) {
 
-            var randomX = (this.canvas.width * 0.9 - this.canvas.width * 0.1) * Math.random();
-            var newCar = new Car(this.canvas, randomX, 5);
+
+            var randomX = [109, 218, 327, 436, 545, 654];
+            var randomValue = randomX[Math.floor(randomX.length * Math.random())];
+
+            var newCar = new Car(this.canvas, randomValue, 5);
+
+
 
             this.cars.push(newCar)
         };
@@ -97,6 +102,8 @@ Game.prototype.checkCollisions = function() {
                 this.gameOver();
             }
         }
+
+
     }, this);
 };
 
@@ -120,4 +127,4 @@ Game.prototype.updateGameStats = function() {
     this.score += 1;
     this.livesElement.innerHTML = this.biker.lives;
     this.scoreElement.innerHTML = this.score;
-};
+}
