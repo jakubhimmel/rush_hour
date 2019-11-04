@@ -3,7 +3,7 @@
 function Game() {
     this.canvas = null;
     this.ctx = null;
-    this.enemies = [];
+    this.cars = [];
     this.biker = null;
     this.gameIsOver = false;
     this.gameScreen = null;
@@ -45,65 +45,67 @@ Game.prototype.start = function() {
 
 Game.prototype.startLoop = function() {
     var loop = function() {
-        // 1. UPDATE THE STATE OF biker AND ENEMIES
 
-        // 0. Our biker was already created - via `game.start()`
+        if (Math.random() > 0.98) {
+            var randomX = this.canvas.width * Math.random();
+            var newCar = new Car(this.canvas, randomX, 5);
 
-        // 1. Create new enemies randomly
-        // if (Math.random() > 0.98) {
-        //     var randomX = this.canvas.width * Math.random();
-        //     this.car.push(new Car(this.canvas, randomX, 5));
-        // }
 
-        // 2. Check if biker had hit any enemy (check all enemies)
-        this.checkCollisions();
+            this.cars.push(newCar);
+        }
 
-        // 3. Check if biker is going off the screen
+
+
+
+
+
+
+
+
         this.biker.handleScreenCollision();
 
-        // 4. Move existing enemies
-        // 5. Check if any enemy is going of the screen
-        // this.enemies = this.enemies.filter(function(enemy) {
-        //     enemy.updatePosition();
-        //     return enemy.isInsideScreen();
-        // });
 
-        // 2. CLEAR THE CANVAS
+
+
+        console.log(this.cars);
+
+        this.checkCollisions();
+
+
+
+
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-        // 3. UPDATE THE CANVAS
-        // Draw the biker
         this.biker.draw();
 
-        // Draw the enemies
-        this.enemies.forEach(function(item) {
+        this.cars.forEach(function(item) {
+            item.updatePosition();
             item.draw();
         });
 
-        // 4. TERMINATE LOOP IF GAME IS OVER
+        this.cars = this.cars.filter(function(car) {
+
+            return car.isInsideScreen();
+        })
+
+
+
         if (!this.gameIsOver) {
             window.requestAnimationFrame(loop);
         }
 
-        //  5. Update Game data/stats
         this.updateGameStats();
     }.bind(this);
-
-    // As loop function will be continuously invoked by
-    // the `window` object- `window.requestAnimationFrame(loop)`
-    // we have to bind the function so that value of `this` is
-    // pointing to the `game` object, like this:
-    // var loop = (function(){}).bind(this);
 
     window.requestAnimationFrame(loop);
 };
 
 Game.prototype.checkCollisions = function() {
-    this.enemies.forEach(function(enemy) {
-        if (this.biker.didCollide(enemy)) {
+    this.cars.forEach(function(car) {
+        if (this.biker.didCollide(car)) {
             this.biker.removeLife();
-            // Move the enemy off screen to the left
-            enemy.x = 0 - enemy.size;
+
+            car.y = 0 - car.size;
 
             if (this.biker.lives === 0) {
                 this.gameOver();
@@ -128,8 +130,8 @@ Game.prototype.removeGameScreen = function() {
     this.gameScreen.remove();
 };
 
-// Game.prototype.updateGameStats = function() {
-//     this.score += 1;
-//     this.livesElement.innerHTML = this.biker.lives;
-//     this.scoreElement.innerHTML = this.score;
-// };
+Game.prototype.updateGameStats = function() {
+    this.score += 1;
+    this.livesElement.innerHTML = this.biker.lives;
+    this.scoreElement.innerHTML = this.score;
+};

@@ -8,51 +8,50 @@ function Biker(canvas, lives) {
     this.width = 50;
     this.x = this.canvas.width / 2;
     this.y = (this.canvas.height - this.height) - 20;
+    this.speed = 20;
 
 }
 
 
 Biker.prototype.moveLeft = function() {
-    this.x -= 20;
+    this.x -= this.speed;
 }
 
 Biker.prototype.moveRight = function() {
-    this.x += 20;
+    this.x += this.speed;
 }
 
 
-// Biker.prototype.didCollide = function(enemy) {
-//     var BikerLeft = this.x;
-//     var BikerRight = this.x + this.size;
-//     var BikerTop = this.y;
-//     var BikerBottom = this.y + this.size;
+Biker.prototype.didCollide = function(enemy) {
+    // var BikerLeft = this.x;
+    // var BikerRight = this.x + this.size;
+    // var BikerTop = this.y;
+    // var BikerBottom = this.y + this.size;
 
-//     var enemyLeft = enemy.x;
-//     var enemyRight = enemy.x + enemy.size;
-//     var enemyTop = enemy.y;
-//     var enemyBottom = enemy.y + enemy.size;
+    // var enemyLeft = enemy.x;
+    // var enemyRight = enemy.x + enemy.size;
+    // var enemyTop = enemy.y;
+    // var enemyBottom = enemy.y + enemy.size;
 
-//     var crossRight = enemyLeft <= playerRight && enemyLeft >= playerLeft;
-//     var crossLeft = enemyRight >= playerLeft && enemyRight <= playerRight;
-//     var crossTop = enemyBottom >= playerTop && enemyBottom <= playerBottom;
-//     var crossBottom = enemyTop <= playerBottom && enemyTop >= playerTop;
+    // var crossRight = enemyLeft <= playerRight && enemyLeft >= playerLeft;
+    // var crossLeft = enemyRight >= playerLeft && enemyRight <= playerRight;
+    // var crossTop = enemyBottom >= playerTop && enemyBottom <= playerBottom;
+    // var crossBottom = enemyTop <= playerBottom && enemyTop >= playerTop;
 
-//     if ((crossRight || crossLeft) && (crossBottom || crossTop)) {
-//         return true;
-//     }
-//     return false;
-// };
+    // if ((crossRight || crossLeft) && (crossBottom || crossTop)) {
+    //     return true;
+    // }
+    // return false;
+};
 
 Biker.prototype.handleScreenCollision = function() {
     var leftEdge = 0;
+    var rightEdge = this.canvas.width;
 
 
-
-    // var screenTop = 0;
-    // var screenBottom = this.canvas.height;
 
     if (this.x < leftEdge) { this.x = 0; }
-    if (this.x >= 723) { this.x = 723; }
+    if (this.x >= 723) { this.x = 718; }
 };
 
 
@@ -61,7 +60,7 @@ Biker.prototype.removeLife = function() {
 };
 
 Biker.prototype.draw = function() {
-    this.ctx.fillStyle = '#FF0000';
-    // fillRect(x, y, width, height)
+    this.ctx.fillStyle = '#66D3FA';
     this.ctx.fillRect(this.x, this.y, this.width, this.height);
 };
+3
