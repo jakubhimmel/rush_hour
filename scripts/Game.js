@@ -51,56 +51,40 @@ Game.prototype.startLoop = function() {
             var randomX = (this.canvas.width * 0.9 - this.canvas.width * 0.1) * Math.random();
             var newCar = new Car(this.canvas, randomX, 5);
 
-            for (let i = 0, i < cars.length; i++) {
-                if (newCar.x === cars[i].x) { continue };
-
-                else { this.cars.push(newCar) }
-
-
-            }
-
-
-
-            // this.cars.push(newCar)
+            this.cars.push(newCar)
         };
-    }
-
-    this.biker.handleScreenCollision();
+        this.biker.handleScreenCollision();
 
 
+        this.checkCollisions();
 
 
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-    this.checkCollisions();
+        this.biker.draw();
 
+        this.cars.forEach(function(item) {
+            item.updatePosition();
+            item.draw();
+        });
 
+        this.cars = this.cars.filter(function(car) {
 
-
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-    this.biker.draw();
-
-    this.cars.forEach(function(item) {
-        item.updatePosition();
-        item.draw();
-    });
-
-    this.cars = this.cars.filter(function(car) {
-
-        return car.isInsideScreen();
-    })
+            return car.isInsideScreen();
+        })
 
 
 
-    if (!this.gameIsOver) {
-        window.requestAnimationFrame(loop);
-    }
+        if (!this.gameIsOver) {
+            window.requestAnimationFrame(loop);
+        }
+        this.updateGameStats();
+    }.bind(this);
 
-    this.updateGameStats();
-}.bind(this);
 
-window.requestAnimationFrame(loop);
-};
+    window.requestAnimationFrame(loop);
+}
+
 
 Game.prototype.checkCollisions = function() {
     this.cars.forEach(function(car) {
