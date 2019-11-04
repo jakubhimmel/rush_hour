@@ -24,3 +24,17 @@ Car.prototype.isInsideScreen = function() {
 
     return this.y < this.canvas.height && this.x < this.canvas.width;
 };
+
+Car.prototype.renderingCollision = function() {
+    var carBottom = this.y + this.size;
+    var carTop = this.y
+
+
+    var cross = carBottom >= carTop;
+
+
+    if (cross === true) {
+        return true;
+    }
+    return false;
+}
