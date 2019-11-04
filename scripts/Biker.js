@@ -43,6 +43,29 @@ Biker.prototype.didCollide = function(car) {
     return false;
 };
 
+Biker.prototype.getLive = function(live) {
+
+    var bikerTop = this.y;
+    var bikerBottom = this.y + this.height;
+
+
+
+
+
+    var liveBottom = live.y + live.size;
+    var liveTop = live.y;
+
+    var cross = bikerTop <= liveBottom && bikerBottom >= liveTop;
+
+
+
+    if (cross) {
+        return true;
+    }
+    return false;
+};
+
+
 Biker.prototype.handleScreenCollision = function() {
     var leftEdge = 0;
     var rightEdge = this.canvas.width;
@@ -56,6 +79,10 @@ Biker.prototype.handleScreenCollision = function() {
 
 Biker.prototype.removeLife = function() {
     this.lives -= 1;
+};
+
+Biker.prototype.addLife = function() {
+    this.lives += 1;
 };
 
 Biker.prototype.draw = function() {
