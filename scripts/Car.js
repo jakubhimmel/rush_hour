@@ -12,7 +12,7 @@ function Car(canvas, x, speed) {
 Car.prototype.draw = function() {
     this.ctx.fillStyle = '#e74c3c';
 
-    this.ctx.fillRect(this.x, this.y, this.size / 2, (this.size));
+    this.ctx.fillRect(this.x, this.y, this.size / 2, this.size);
 
 };
 

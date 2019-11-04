@@ -47,20 +47,12 @@ Game.prototype.startLoop = function() {
     var loop = function() {
 
         if (Math.random() > 0.98) {
-            var randomX = this.canvas.width * Math.random();
+            var randomX = (this.canvas.width * 0.9 - this.canvas.width * 0.1) * Math.random();
             var newCar = new Car(this.canvas, randomX, 5);
 
 
             this.cars.push(newCar);
         }
-
-
-
-
-
-
-
-
 
         this.biker.handleScreenCollision();
 

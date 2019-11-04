@@ -22,26 +22,26 @@ Biker.prototype.moveRight = function() {
 }
 
 
-Biker.prototype.didCollide = function(enemy) {
-    // var BikerLeft = this.x;
-    // var BikerRight = this.x + this.size;
-    // var BikerTop = this.y;
-    // var BikerBottom = this.y + this.size;
+Biker.prototype.didCollide = function(car) {
+    var bikerLeft = this.x;
+    var bikerRight = this.x + this.width;
+    var bikerTop = this.y;
+    var bikerBottom = this.y + this.height;
 
-    // var enemyLeft = enemy.x;
-    // var enemyRight = enemy.x + enemy.size;
-    // var enemyTop = enemy.y;
-    // var enemyBottom = enemy.y + enemy.size;
+    var carLeft = car.x;
+    var carRight = car.x + car.size / 2;
+    var carTop = car.y;
+    var carBottom = car.y + car.size;
 
-    // var crossRight = enemyLeft <= playerRight && enemyLeft >= playerLeft;
-    // var crossLeft = enemyRight >= playerLeft && enemyRight <= playerRight;
-    // var crossTop = enemyBottom >= playerTop && enemyBottom <= playerBottom;
-    // var crossBottom = enemyTop <= playerBottom && enemyTop >= playerTop;
+    var crossRight = carLeft <= bikerRight && carLeft >= bikerLeft;
+    var crossLeft = carRight >= bikerLeft && carRight <= bikerRight;
+    var crossTop = carBottom >= bikerTop && carBottom <= bikerBottom;
+    var crossBottom = carTop <= bikerBottom && carTop >= bikerTop;
 
-    // if ((crossRight || crossLeft) && (crossBottom || crossTop)) {
-    //     return true;
-    // }
-    // return false;
+    if ((crossRight || crossLeft) && (crossBottom || crossTop)) {
+        return true;
+    }
+    return false;
 };
 
 Biker.prototype.handleScreenCollision = function() {
