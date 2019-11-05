@@ -5,10 +5,13 @@ function Game() {
     this.ctx = null;
     this.cars = [];
     this.livesArr = [];
+    this.addPointsArr = [];
+    this.speedChangeArr = [];
     this.biker = null;
     this.gameIsOver = false;
     this.gameScreen = null;
     this.score = 0;
+    this.speed = 5;
 }
 
 
@@ -53,8 +56,7 @@ Game.prototype.startLoop = function() {
             var randomX = [109, 218, 327, 436, 545, 654];
             var randomValue = randomX[Math.floor(randomX.length * Math.random())];
 
-            var newCar = new Car(this.canvas, randomValue, 5);
-
+            var newCar = new Car(this.canvas, randomValue, this.speed);
 
 
             this.cars.push(newCar)
@@ -68,11 +70,41 @@ Game.prototype.startLoop = function() {
 
 
 
-            var newLives = new Lives(this.canvas, randomValue, 5);
+            var newLives = new Lives(this.canvas, randomValue, 6);
 
 
 
             this.livesArr.push(newLives)
+        };
+
+        if (Math.random() > 0.99) {
+
+
+            var randomX = [109, 118, 155, 170, 200, 218, 256, 278, 303, 314, 327, 344, 377, 398, 410, 436, 460, 476, 500, 515, 535, 580, 545, 569, 580, 620, 654];
+            var randomValue = randomX[Math.floor(randomX.length * Math.random())];
+
+
+
+            var addPoints = new AddPoints(this.canvas, randomValue, 7);
+
+
+
+            this.addPointsArr.push(addPoints)
+        };
+
+        if (Math.random() > 0.99) {
+
+
+            var randomX = [109, 118, 155, 170, 200, 218, 256, 278, 303, 314, 327, 344, 377, 398, 410, 436, 460, 476, 500, 515, 535, 580, 545, 569, 580, 620, 654];
+            var randomValue = randomX[Math.floor(randomX.length * Math.random())];
+
+
+
+            var speedNew = new SpeedChange(this.canvas, randomValue, 7);
+
+
+
+            this.speedChangeArr.push(speedNew)
         };
 
 
@@ -99,6 +131,16 @@ Game.prototype.startLoop = function() {
             item.draw();
         });
 
+        this.addPointsArr.forEach(function(item) {
+            item.updatePosition();
+            item.draw();
+        });
+
+        this.speedChangeArr.forEach(function(item) {
+            item.updatePosition();
+            item.draw();
+        });
+
         this.cars = this.cars.filter(function(car) {
 
             return car.isInsideScreen();
@@ -108,6 +150,17 @@ Game.prototype.startLoop = function() {
 
             return live.isInsideScreen();
         })
+
+        this.addPointsArr = this.addPointsArr.filter(function(point) {
+
+            return point.isInsideScreen();
+        })
+
+        this.speedChangeArr = this.speedChangeArr.filter(function(speed) {
+
+            return speed.isInsideScreen();
+        })
+
 
 
 
@@ -142,6 +195,36 @@ Game.prototype.checkCollisions = function() {
             live.y = 0 - live.size;
             this.livesArr.splice(index, 1)
         }
+
+    }, this)
+
+
+    this.addPointsArr.forEach(function(point, index) {
+        if (this.biker.AddPoints(point)) {
+            this.score += 200;
+            point.y = 0 - point.size;
+            this.addPointsArr.splice(index, 1)
+        }
+
+
+
+    }, this)
+
+    this.speedChangeArr.forEach(function(speedObj, index) {
+        if (this.biker.SpeedChange(speedObj)) {
+            console.log(this.car);
+            this.cars.forEach(function(car) {
+                car.speed = this.speed / 2;
+                // this.speed = 20;
+
+
+            }, this)
+
+            speedObj.y = 0 - speedObj.size;
+            this.speedChangeArr.splice(index, 1)
+        }
+
+
 
     }, this)
 

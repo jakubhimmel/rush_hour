@@ -71,6 +71,64 @@ Biker.prototype.getLive = function(live) {
     return false;
 };
 
+Biker.prototype.AddPoints = function(point) {
+
+
+    var bikerLeft = this.x;
+    var bikerRight = this.x + this.width;
+    var bikerTop = this.y;
+    var bikerBottom = this.y + this.height;
+
+
+
+
+
+    var pointBottom = point.y + point.size;
+    var pointTop = point.y;
+    var pointRight = point.x;
+    var pointLeft = point.x + point.size;
+
+    var crossVertical = bikerLeft <= pointRight && bikerRight >= pointLeft;
+    var crossHorizontal = bikerTop <= pointBottom && bikerBottom >= pointTop;
+
+
+
+    if (crossHorizontal && crossVertical) {
+        return true;
+    }
+    return false;
+};
+
+
+Biker.prototype.SpeedChange = function(speed) {
+
+
+    var bikerLeft = this.x;
+    var bikerRight = this.x + this.width;
+    var bikerTop = this.y;
+    var bikerBottom = this.y + this.height;
+
+
+
+
+
+    var speedBottom = speed.y + speed.size;
+    var speedTop = speed.y;
+    var speedRight = speed.x;
+    var speedLeft = speed.x + speed.size;
+
+    var crossVertical = bikerLeft <= speedRight && bikerRight >= speedLeft;
+    var crossHorizontal = bikerTop <= speedBottom && bikerBottom >= speedTop;
+
+
+
+    if (crossHorizontal && crossVertical) {
+        return true;
+    }
+    return false;
+};
+
+
 
 Biker.prototype.handleScreenCollision = function() {
     var leftEdge = 0;
@@ -90,6 +148,11 @@ Biker.prototype.removeLife = function() {
 Biker.prototype.addLife = function() {
     this.lives += 1;
 };
+
+Biker.prototype.addLife = function() {
+    this.lives += 1;
+};
+
 
 Biker.prototype.draw = function() {
     this.ctx.fillStyle = '#66D3FA';
