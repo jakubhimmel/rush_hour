@@ -4,7 +4,7 @@ function Game() {
     this.canvas = null;
     this.ctx = null;
     this.cars = [];
-    this.lives = [];
+    this.livesArr = [];
     this.biker = null;
     this.gameIsOver = false;
     this.gameScreen = null;
@@ -63,15 +63,19 @@ Game.prototype.startLoop = function() {
         if (Math.random() > 0.99) {
 
 
-            var randomX = [109, 218, 327, 436, 545, 654];
+            var randomX = [109, 118, 155, 170, 200, 218, 256, 278, 303, 314, 327, 344, 377, 398, 410, 436, 460, 476, 500, 515, 535, 580, 545, 569, 580, 620, 654];
             var randomValue = randomX[Math.floor(randomX.length * Math.random())];
+
+
 
             var newLives = new Lives(this.canvas, randomValue, 5);
 
 
 
-            this.lives.push(newLives)
+            this.livesArr.push(newLives)
         };
+
+
 
 
 
@@ -90,7 +94,7 @@ Game.prototype.startLoop = function() {
             item.draw();
         });
 
-        this.lives.forEach(function(item) {
+        this.livesArr.forEach(function(item) {
             item.updatePosition();
             item.draw();
         });
@@ -100,7 +104,7 @@ Game.prototype.startLoop = function() {
             return car.isInsideScreen();
         })
 
-        this.lives = this.lives.filter(function(live) {
+        this.livesArr = this.livesArr.filter(function(live) {
 
             return live.isInsideScreen();
         })
@@ -130,18 +134,19 @@ Game.prototype.checkCollisions = function() {
             }
         }
 
-        // if (this.biker.getLive()) {
-        //     this.biker.addLife();
-
-        //     live.y = 0 - live.size;
-
-        //     if (this.biker.lives === 0) {
-        //         this.gameOver();
-        //     }
-        // }
-
-
     }, this);
+
+    this.livesArr.forEach(function(live, index) {
+        if (this.biker.getLive(live)) {
+            this.biker.lives++;
+            live.y = 0 - live.size;
+            this.livesArr.splice(index, 1)
+        }
+
+    }, this)
+
+
+
 };
 
 Game.prototype.passGameOverCallback = function(callback) {
