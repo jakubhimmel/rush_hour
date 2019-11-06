@@ -10,9 +10,17 @@ function Car(canvas, x, speed) {
 }
 
 Car.prototype.draw = function() {
-    this.ctx.fillStyle = '#e74c3c';
+    var carImage = new Image();
+    carImage.src = '../images/img_8780.png'
 
-    this.ctx.fillRect(this.x, this.y, this.size / 2, this.size);
+    carImage.width = this.size / 2
+    carImage.height = this.size
+
+
+    this.ctx.drawImage(carImage, this.x, this.y, this.size / 2, this.size)
+
+
+    console.log(carImage.width);
 
 };
 
