@@ -16,7 +16,7 @@ function main() {
         splashScreen = buildDom(`
     <main>
       <h1>Rush Hour:</h1>
-      <h2>Pallea time</h2>
+      <h2>Paella time</h2>
       <button>Start the Game !!!</button>
     </main>
   `);
@@ -43,8 +43,12 @@ function main() {
           <span class="value"></span>
         </div>
         <div class="score">
-          <span class="label">Score:</span>
-          <span class="value"></span>
+          <span class="label">Time:</span>
+          <span class="value">0</span>
+        </div>
+        <div class="paella-counter">
+          <span class="label">Paella:</span>
+          <span class="value">0</span>
         </div>
       </header>
       <div class="canvas-container">
@@ -76,7 +80,7 @@ function main() {
         button.addEventListener('click', startGame);
 
         var span = gameOverScreen.querySelector('span');
-        span.innerText = score;
+        span.innerText = score.toFixed(0);
 
         document.body.appendChild(gameOverScreen);
     }

@@ -12,6 +12,7 @@ function Game() {
     this.gameScreen = null;
     this.score = 0;
     this.speed = 5;
+    this.pointArray = [];
 }
 
 
@@ -50,7 +51,7 @@ Game.prototype.start = function() {
 Game.prototype.startLoop = function() {
     var loop = function() {
 
-        if (Math.random() > 0.98) {
+        if (Math.random() > 0.95) {
 
 
             var randomX = [109, 218, 327, 436, 545, 654];
@@ -58,9 +59,31 @@ Game.prototype.startLoop = function() {
 
             var newCar = new Car(this.canvas, randomValue, this.speed);
 
+            var carOk = true;
+            this.cars.forEach(function(car) {
+                if (car.x === newCar.x && car.y < newCar.y + newCar.size + 50) {
+                    console.log('kjhg');
+                    carOk = false;
+                }
+            });
 
-            this.cars.push(newCar)
-        };
+            if (carOk === true) {
+                this.cars.push(newCar)
+            }
+
+            // this.cars.push(newCar)
+
+
+        }
+
+
+
+
+
+
+
+
+
 
         if (Math.random() > 0.99) {
 
@@ -77,7 +100,7 @@ Game.prototype.startLoop = function() {
             this.livesArr.push(newLives)
         };
 
-        if (Math.random() > 0.99) {
+        if (Math.random() > 0.997) {
 
 
             var randomX = [109, 118, 155, 170, 200, 218, 256, 278, 303, 314, 327, 344, 377, 398, 410, 436, 460, 476, 500, 515, 535, 580, 545, 569, 580, 620, 654];
@@ -90,6 +113,7 @@ Game.prototype.startLoop = function() {
 
 
             this.addPointsArr.push(addPoints)
+
         };
 
         if (Math.random() > 0.99) {
@@ -171,7 +195,8 @@ Game.prototype.startLoop = function() {
     }.bind(this);
 
 
-    window.requestAnimationFrame(loop);
+    window.requestAnimationFrame(loop)
+
 }
 
 
@@ -191,7 +216,7 @@ Game.prototype.checkCollisions = function() {
 
     this.livesArr.forEach(function(live, index) {
         if (this.biker.getLive(live)) {
-            this.biker.lives++;
+            this.score += 1000;
             live.y = 0 - live.size;
             this.livesArr.splice(index, 1)
         }
@@ -201,9 +226,12 @@ Game.prototype.checkCollisions = function() {
 
     this.addPointsArr.forEach(function(point, index) {
         if (this.biker.AddPoints(point)) {
-            this.score += 200;
             point.y = 0 - point.size;
+            this.pointArray.push(point);
+            if (this.pointArray.length === 3) { this.gameOver() }
             this.addPointsArr.splice(index, 1)
+
+
         }
 
 
@@ -212,10 +240,9 @@ Game.prototype.checkCollisions = function() {
 
     this.speedChangeArr.forEach(function(speedObj, index) {
         if (this.biker.SpeedChange(speedObj)) {
-            console.log(this.car);
             this.cars.forEach(function(car) {
-                car.speed = this.speed / 2;
-                // this.speed = 20;
+                car.speed = 3;
+                // this.speed = 3;
 
 
             }, this)
@@ -225,12 +252,12 @@ Game.prototype.checkCollisions = function() {
         }
 
 
-
     }, this)
 
 
 
 };
+
 
 Game.prototype.passGameOverCallback = function(callback) {
     this.onGameOverCallback = callback;
@@ -251,5 +278,5 @@ Game.prototype.removeGameScreen = function() {
 Game.prototype.updateGameStats = function() {
     this.score += 1;
     this.livesElement.innerHTML = this.biker.lives;
-    this.scoreElement.innerHTML = this.score;
+    this.scoreElement.innerHTML = this.score.toFixed(0);
 }

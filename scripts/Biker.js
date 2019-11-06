@@ -57,15 +57,17 @@ Biker.prototype.getLive = function(live) {
 
     var liveBottom = live.y + live.size;
     var liveTop = live.y;
-    var liveRight = live.x;
-    var liveLeft = live.x + live.size;
+    var liveRight = live.x + live.size;
+    var liveLeft = live.x;
 
     var crossVertical = bikerLeft <= liveRight && bikerRight >= liveLeft;
     var crossHorizontal = bikerTop <= liveBottom && bikerBottom >= liveTop;
+    var partialCrossLeft = liveRight >= bikerLeft && liveLeft <= bikerLeft;
+    var partialCrossRight = liveRight >= bikerRight && liveLeft <= bikerRight;
 
 
 
-    if (crossHorizontal && crossVertical) {
+    if (crossHorizontal && crossVertical || partialCrossLeft && partialCrossRight) {
         return true;
     }
     return false;
@@ -85,15 +87,17 @@ Biker.prototype.AddPoints = function(point) {
 
     var pointBottom = point.y + point.size;
     var pointTop = point.y;
-    var pointRight = point.x;
-    var pointLeft = point.x + point.size;
+    var pointRight = point.x + point.size;
+    var pointLeft = point.x;
 
     var crossVertical = bikerLeft <= pointRight && bikerRight >= pointLeft;
     var crossHorizontal = bikerTop <= pointBottom && bikerBottom >= pointTop;
+    var partialCrossLeft = pointRight >= bikerLeft && pointLeft <= bikerLeft;
+    var partialCrossRight = pointRight >= bikerRight && pointLeft <= bikerRight;
 
 
 
-    if (crossHorizontal && crossVertical) {
+    if (crossHorizontal && crossVertical || partialCrossLeft && partialCrossRight) {
         return true;
     }
     return false;
@@ -114,15 +118,17 @@ Biker.prototype.SpeedChange = function(speed) {
 
     var speedBottom = speed.y + speed.size;
     var speedTop = speed.y;
-    var speedRight = speed.x;
-    var speedLeft = speed.x + speed.size;
+    var speedRight = speed.x + speed.size;
+    var speedLeft = speed.x;
 
     var crossVertical = bikerLeft <= speedRight && bikerRight >= speedLeft;
     var crossHorizontal = bikerTop <= speedBottom && bikerBottom >= speedTop;
+    var partialCrossLeft = speedRight >= bikerLeft && speedLeft <= bikerLeft;
+    var partialCrossRight = speedRight >= bikerRight && speedLeft <= bikerRight;
 
 
 
-    if (crossHorizontal && crossVertical) {
+    if (crossHorizontal && crossVertical || partialCrossLeft && partialCrossRight) {
         return true;
     }
     return false;
