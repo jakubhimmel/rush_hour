@@ -161,7 +161,16 @@ Biker.prototype.addLife = function() {
 
 
 Biker.prototype.draw = function() {
-    this.ctx.fillStyle = '#66D3FA';
-    this.ctx.fillRect(this.x, this.y, this.width, this.height);
+    var carImage = new Image();
+    carImage.src = '../images/bike.png'
+
+    carImage.width = 50
+    carImage.height = 100;
+
+
+    this.ctx.drawImage(carImage, this.x, this.y, 50, 100)
+
+
+    console.log(carImage.width);
 };
 3
