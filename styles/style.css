@@ -150,4 +150,7 @@ body {
     align-items: center;
 }
 
-.gameover-screen button {}
+.gameover-screen button {
+    margin-top: 20px;
+    padding: 10px;
+}

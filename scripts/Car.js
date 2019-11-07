@@ -26,7 +26,6 @@ Car.prototype.draw = function(car) {
     this.ctx.drawImage(carImage, this.x, this.y, this.size / 2, this.size)
 
 
-    console.log(carImage.width);
 
     return this.randomCar
 };

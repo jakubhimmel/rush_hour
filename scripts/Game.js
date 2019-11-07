@@ -226,7 +226,8 @@ Game.prototype.checkCollisions = function() {
         if (this.biker.AddPoints(point)) {
             point.y = 0 - point.size;
             this.pointArray.push(point);
-            this.addPointsArr.splice(index, 1)
+            // this.addPointsArr.splice(index, 1)
+            console.log(this.pointArray.length);
 
 
         }
@@ -273,5 +274,6 @@ Game.prototype.removeGameScreen = function() {
 
 Game.prototype.updateGameStats = function() {
     this.livesElement.innerHTML = this.biker.lives;
-    this.scoreElement.innerHTML = this.score.toFixed(0);
+
+    // this.scoreElement.innerHTML = this.pointArray.length;
 }
