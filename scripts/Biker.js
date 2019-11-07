@@ -160,7 +160,8 @@ Biker.prototype.addLife = function() {
 
 Biker.prototype.draw = function() {
     var carImage = new Image();
-    carImage.src = './../images/bike.png'
+    // carImage.src = './../images/bike.png'
+    carImage.src = './images/bike.png'
 
     carImage.width = 50
     carImage.height = 100;
