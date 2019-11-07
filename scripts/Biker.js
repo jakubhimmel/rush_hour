@@ -67,7 +67,7 @@ Biker.prototype.getLive = function(live) {
 
 
 
-    if (crossHorizontal && crossVertical || partialCrossLeft && partialCrossRight) {
+    if (crossHorizontal && crossVertical || partialCrossLeft && crossHorizontal || partialCrossRight && crossHorizontal) {
         return true;
     }
     return false;
@@ -97,7 +97,7 @@ Biker.prototype.AddPoints = function(point) {
 
 
 
-    if (crossHorizontal && crossVertical || partialCrossLeft && partialCrossRight) {
+    if (crossHorizontal && crossVertical || partialCrossLeft && crossHorizontal || partialCrossRight && crossHorizontal) {
         return true;
     }
     return false;
@@ -116,9 +116,9 @@ Biker.prototype.SpeedChange = function(speed) {
 
 
 
-    var speedBottom = speed.y + speed.size;
+    var speedBottom = speed.y + 60;
     var speedTop = speed.y;
-    var speedRight = speed.x + speed.size;
+    var speedRight = speed.x + 60;
     var speedLeft = speed.x;
 
     var crossVertical = bikerLeft <= speedRight && bikerRight >= speedLeft;
@@ -128,7 +128,7 @@ Biker.prototype.SpeedChange = function(speed) {
 
 
 
-    if (crossHorizontal && crossVertical || partialCrossLeft && partialCrossRight) {
+    if (crossHorizontal && crossVertical || partialCrossLeft && crossHorizontal || partialCrossRight && crossHorizontal) {
         return true;
     }
     return false;

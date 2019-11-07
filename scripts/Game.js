@@ -51,7 +51,7 @@ Game.prototype.start = function() {
 Game.prototype.startLoop = function() {
     var loop = function() {
 
-        if (Math.random() > 0.95) {
+        if (Math.random() > 0.99) {
 
 
             var randomX = [70, 190, 310, 420, 530, 635];
@@ -115,7 +115,7 @@ Game.prototype.startLoop = function() {
 
         };
 
-        if (Math.random() > 0.998) {
+        if (Math.random() > 0.995) {
 
 
             var randomX = [109, 118, 155, 170, 200, 218, 256, 278, 303, 314, 327, 344, 377, 398, 410, 436, 460, 476, 500, 515, 535, 580, 545, 569, 580, 620, 654];
