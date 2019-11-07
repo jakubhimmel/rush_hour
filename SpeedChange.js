@@ -3,17 +3,21 @@
 function SpeedChange(canvas, x, speed) {
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
-    this.size = 10;
+    this.size = 60;
     this.y = 0;
     this.x = x;
     this.speed = speed;
 }
 
 SpeedChange.prototype.draw = function() {
-    this.ctx.fillStyle = 'white';
+    var carImage = new Image();
+    carImage.src = '../images/beer.png'
 
-    this.ctx.fillRect(this.x, this.y, this.size, this.size);
+    carImage.width = 60;
+    carImage.height = 60;
 
+
+    this.ctx.drawImage(carImage, this.x, this.y, 60, 60)
 };
 
 SpeedChange.prototype.updatePosition = function() {

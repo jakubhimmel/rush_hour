@@ -87,7 +87,8 @@ body {
 
 .game .canvas-container {
     flex: 1;
-    background: rgb(207, 207, 207);
+    background-image: url('/images/finalStreet.png');
+    background-repeat: no-repeat;
 }
 
 

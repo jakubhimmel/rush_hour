@@ -137,13 +137,13 @@ Biker.prototype.SpeedChange = function(speed) {
 
 
 Biker.prototype.handleScreenCollision = function() {
-    var leftEdge = 0;
+    var leftEdge = 45;
     var rightEdge = this.canvas.width;
 
 
 
-    if (this.x < leftEdge) { this.x = 0; }
-    if (this.x >= 723) { this.x = 718; }
+    if (this.x < leftEdge) { this.x = 45; }
+    if (this.x >= 685) { this.x = 685; }
 };
 
 
@@ -151,9 +151,7 @@ Biker.prototype.removeLife = function() {
     this.lives -= 1;
 };
 
-Biker.prototype.addLife = function() {
-    this.lives += 1;
-};
+
 
 Biker.prototype.addLife = function() {
     this.lives += 1;
@@ -171,6 +169,4 @@ Biker.prototype.draw = function() {
     this.ctx.drawImage(carImage, this.x, this.y, 50, 100)
 
 
-    console.log(carImage.width);
 };
-3

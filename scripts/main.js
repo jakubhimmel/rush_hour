@@ -48,7 +48,7 @@ function main() {
         </div>
         <div class="paella-counter">
           <span class="label">Paella:</span>
-          <span class="value">0</span>
+          <span class="value">0/3</span>
         </div>
       </header>
       <div class="canvas-container">
