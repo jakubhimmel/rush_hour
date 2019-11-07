@@ -71,8 +71,8 @@ function main() {
     function createGameOverScreen(score) {
         gameOverScreen = buildDom(`
       <main class=gameover-screen>
-        <h1>Game over</h1>
-        <p>Your score: <span></span></p>
+        <h1>Game Over</h1>
+        <p>Your score: <span>0</span></p>
         <button>Restart</button>
     </main>
     `);
