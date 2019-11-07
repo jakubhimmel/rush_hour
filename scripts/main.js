@@ -16,17 +16,12 @@ function main() {
         splashScreen = buildDom(`
     <main class = splash-screen>
       <h1>Rush Hour:</h1>
-<<<<<<< HEAD
-      <h2>Paella time</h2>
-      <button>Start the Game !!!</button>
-=======
       <h2>____ time</h2>
       <nav>
       <button>Start the Game</button>
       <button>How to play</button>
       <button>Scoreboard</button>
      <nav>
->>>>>>> gh-pages
     </main>
   `);
 
@@ -51,18 +46,9 @@ function main() {
         <img class="image" src="/styles/pixel-heart-2779422_1280.png" alt="heart-image">
           <span class="value"></span>
         </div>
-<<<<<<< HEAD
-        <div class="score">
-          <span class="label">Time:</span>
-          <span class="value">0</span>
-        </div>
-        <div class="paella-counter">
-          <span class="label">Paella:</span>
-=======
 
         <div class="paella-counter">
           <span class="label">Paella Counter:</span>
->>>>>>> gh-pages
           <span class="value">0</span>
         </div>
       </header>

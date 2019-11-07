@@ -11,7 +11,7 @@ function AddPoints(canvas, x, speed) {
 
 AddPoints.prototype.draw = function() {
     var carImage = new Image();
-    carImage.src = './../images/taco.png'
+    carImage.src = './images/taco.png'
 
     carImage.width = 60;
     carImage.height = 60;
