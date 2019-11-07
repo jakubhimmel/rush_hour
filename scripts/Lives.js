@@ -11,7 +11,7 @@ function Lives(canvas, x, speed) {
 
 Lives.prototype.draw = function() {
     var carImage = new Image();
-    carImage.src = '../images/pepper.png'
+    carImage.src = './../images/pepper.png'
 
     carImage.width = 60;
     carImage.height = 60;

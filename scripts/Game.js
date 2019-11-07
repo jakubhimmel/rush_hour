@@ -12,7 +12,7 @@ function Game() {
     this.gameScreen = null;
     this.score = 0;
     this.speed = 6.5;
-    this.pointArray = [];
+    this.pointArray = 0;
 }
 
 
@@ -225,9 +225,9 @@ Game.prototype.checkCollisions = function() {
     this.addPointsArr.forEach(function(point, index) {
         if (this.biker.AddPoints(point)) {
             point.y = 0 - point.size;
-            this.pointArray.push(point);
+            this.pointArray++;
             // this.addPointsArr.splice(index, 1)
-            console.log(this.pointArray.length);
+            console.log(this.pointArray);
 
 
         }
@@ -275,5 +275,5 @@ Game.prototype.removeGameScreen = function() {
 Game.prototype.updateGameStats = function() {
     this.livesElement.innerHTML = this.biker.lives;
 
-    // this.scoreElement.innerHTML = this.pointArray.length;
+    this.scoreElement.innerHTML = this.pointArray;
 }
