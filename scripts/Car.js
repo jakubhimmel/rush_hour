@@ -11,7 +11,7 @@ function Car(canvas, x, speed) {
 
 Car.prototype.draw = function() {
     var carImage = new Image();
-    carImage.src = '../images/img_8780.png'
+    carImage.src = '../images/car.png'
 
     carImage.width = this.size / 2
     carImage.height = this.size
