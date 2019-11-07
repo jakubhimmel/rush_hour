@@ -56,7 +56,7 @@ Game.prototype.startLoop = function() {
 
             var randomX = [70, 190, 310, 420, 530, 635];
             var randomValue = randomX[Math.floor(randomX.length * Math.random())];
-            this.randomNum = Math.floor(Math.random() * 12);
+            this.randomNum = Math.floor(Math.random() * 11);
             var newCar = new Car(this.canvas, randomValue, this.speed, this.randomNum);
 
             var carOk = true;
@@ -226,7 +226,6 @@ Game.prototype.checkCollisions = function() {
         if (this.biker.AddPoints(point)) {
             point.y = 0 - point.size;
             this.pointArray.push(point);
-            if (this.pointArray.length === 3) { this.gameOver() }
             this.addPointsArr.splice(index, 1)
 
 
@@ -273,7 +272,6 @@ Game.prototype.removeGameScreen = function() {
 };
 
 Game.prototype.updateGameStats = function() {
-    this.score += 1;
     this.livesElement.innerHTML = this.biker.lives;
     this.scoreElement.innerHTML = this.score.toFixed(0);
 }
