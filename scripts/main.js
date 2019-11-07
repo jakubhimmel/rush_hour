@@ -43,7 +43,7 @@ function main() {
     <main class="game container">
       <header>
         <div class="lives">
-        <img class="image" src="./styles/pixel-heart-2779422_1280.png" alt="heart-image">
+        <img class="image" src="../styles/pixel-heart-2779422_1280.png" alt="heart-image">
           <span class="value"></span>
         </div>
 

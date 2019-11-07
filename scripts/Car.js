@@ -14,7 +14,7 @@ function Car(canvas, x, speed, random) {
 Car.prototype.draw = function(car) {
     var carImage = new Image();
 
-    var carArray = ['./images/car/car1.png', './images/car/car2.png', './images/car/car3.png', './images/car/car4.png', './images/car/car5.png', './images/car/car6.png', './images/car/car7.png', './images/car/car8.png', './images/car/car9.png', './images/car/car10.png', './images/car/car11.png']
+    var carArray = ['../images/car/car1.png', '../images/car/car2.png', '../images/car/car3.png', '../images/car/car4.png', '../images/car/car5.png', '../images/car/car6.png', '../images/car/car7.png', '../images/car/car8.png', '../images/car/car9.png', '../images/car/car10.png', '../images/car/car11.png']
 
 
     carImage.src = carArray[this.randomCar];
