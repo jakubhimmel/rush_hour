@@ -85,7 +85,7 @@ Game.prototype.startLoop = function() {
 
 
 
-        if (Math.random() > 0.998) {
+        if (Math.random() > 0.992) {
 
 
             var randomX = [109, 118, 155, 170, 200, 218, 256, 278, 303, 314, 327, 344, 377, 398, 410, 436, 460, 476, 500, 515, 535, 580, 545, 569, 580, 620, 654];
@@ -100,7 +100,7 @@ Game.prototype.startLoop = function() {
             this.livesArr.push(newLives)
         };
 
-        if (Math.random() > 0.9) {
+        if (Math.random() > 0.97) {
 
 
             var randomX = [109, 118, 155, 170, 200, 218, 256, 278, 303, 314, 327, 344, 377, 398, 410, 436, 460, 476, 500, 515, 535, 580, 545, 569, 580, 620, 654];
@@ -116,7 +116,7 @@ Game.prototype.startLoop = function() {
 
         };
 
-        if (Math.random() > 0.997) {
+        if (Math.random() > 0.992) {
 
 
             var randomX = [109, 118, 155, 170, 200, 218, 256, 278, 303, 314, 327, 344, 377, 398, 410, 436, 460, 476, 500, 515, 535, 580, 545, 569, 580, 620, 654];

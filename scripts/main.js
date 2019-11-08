@@ -17,7 +17,7 @@ function main() {
         splashScreen = buildDom(`
     <main class = splash-screen>
       <h1>Rush Hour:</h1>
-      <h2>____ time</h2>
+      <h2>Taco time</h2>
       <img class="arrows" src="../images/arrowKeys.png" alt="arrow keys"> <br>
       <section class ='icons'>
       <div>
@@ -67,7 +67,7 @@ function main() {
         </div>
 
         <div class="paella-counter">
-          <span class="label">Paella Counter:</span>
+          <span class="label">Taco Counter:</span>
           <span class="value display">0</span>
         </div>
       </header>
