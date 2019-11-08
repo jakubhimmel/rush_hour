@@ -11,7 +11,7 @@ function Game() {
     this.gameIsOver = false;
     this.gameScreen = null;
     this.score = 0;
-    this.speed = 6.5;
+    this.speed = 6;
     this.pointArray = 0;
 }
 
@@ -23,8 +23,9 @@ Game.prototype.start = function() {
     this.ctx = this.canvas.getContext('2d');
 
     this.livesElement = this.gameScreen.querySelector('.lives .value');
-    this.scoreElement = this.gameScreen.querySelector('.score .value');
+    this.scoreElement = this.gameScreen.querySelector('.display');
 
+    console.log(this.scoreElement);
 
     this.containerWidth = this.canvasContainer.offsetWidth;
     this.containerHeight = this.canvasContainer.offsetHeight;
@@ -51,7 +52,7 @@ Game.prototype.start = function() {
 Game.prototype.startLoop = function() {
     var loop = function() {
 
-        if (Math.random() > 0.99) {
+        if (Math.random() > 0.98) {
 
 
             var randomX = [70, 190, 310, 420, 530, 635];
@@ -99,7 +100,7 @@ Game.prototype.startLoop = function() {
             this.livesArr.push(newLives)
         };
 
-        if (Math.random() > 0.998) {
+        if (Math.random() > 0.9) {
 
 
             var randomX = [109, 118, 155, 170, 200, 218, 256, 278, 303, 314, 327, 344, 377, 398, 410, 436, 460, 476, 500, 515, 535, 580, 545, 569, 580, 620, 654];
@@ -115,7 +116,7 @@ Game.prototype.startLoop = function() {
 
         };
 
-        if (Math.random() > 0.995) {
+        if (Math.random() > 0.997) {
 
 
             var randomX = [109, 118, 155, 170, 200, 218, 256, 278, 303, 314, 327, 344, 377, 398, 410, 436, 460, 476, 500, 515, 535, 580, 545, 569, 580, 620, 654];
@@ -123,7 +124,7 @@ Game.prototype.startLoop = function() {
 
 
 
-            var speedNew = new SpeedChange(this.canvas, randomValue, 6.2);
+            var speedNew = new SpeedChange(this.canvas, randomValue, 5);
 
 
 
@@ -207,7 +208,8 @@ Game.prototype.checkCollisions = function() {
             car.y = 0 - car.size;
 
             if (this.biker.lives === 0) {
-                this.gameOver();
+                console.log("fghjk");
+                this.gameOver(this.pointArray);
             }
         }
 
@@ -227,8 +229,8 @@ Game.prototype.checkCollisions = function() {
         if (this.biker.AddPoints(point)) {
             point.y = 0 - point.size;
             this.pointArray++;
-            // this.addPointsArr.splice(index, 1)
             console.log(this.pointArray);
+            this.addPointsArr.splice(index, 1)
 
 
         }
@@ -240,7 +242,9 @@ Game.prototype.checkCollisions = function() {
     this.speedChangeArr.forEach(function(speedObj, index) {
         if (this.biker.SpeedChange(speedObj)) {
             this.cars.forEach(function(car) {
-                car.speed = 3;
+                // car.speed = 3;
+                this.cars.splice(0, 10)
+
 
 
             }, this)
@@ -261,12 +265,12 @@ Game.prototype.passGameOverCallback = function(callback) {
     this.onGameOverCallback = callback;
 };
 
-Game.prototype.gameOver = function() {
+Game.prototype.gameOver = function(score) {
     // flag `gameIsOver = true` stops the loop
     this.gameIsOver = true;
 
     // Call the gameOver function from `main` to show the Game Over Screen
-    this.onGameOverCallback();
+    this.onGameOverCallback(score);
 };
 
 Game.prototype.removeGameScreen = function() {

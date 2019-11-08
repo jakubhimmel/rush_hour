@@ -11,7 +11,7 @@ function SpeedChange(canvas, x, speed) {
 
 SpeedChange.prototype.draw = function() {
     var carImage = new Image();
-    carImage.src = './images/beer.png'
+    carImage.src = './images/bomb.png'
 
     carImage.width = 60;
     carImage.height = 60;
