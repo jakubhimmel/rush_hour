@@ -18,22 +18,22 @@ function main() {
     <main class = splash-screen>
       <h1>Rush Hour:</h1>
       <h2>Taco time</h2>
-      <img class="arrows" src="../images/arrowKeys.png" alt="arrow keys"> <br>
+      <img class="arrows" src="./images/arrowKeys.png" alt="arrow keys"> <br>
       <section class ='icons'>
       <div>
-      <img src="../images/car/car2.png" alt="arrow keys">
+      <img src="./images/car/car2.png" alt="arrow keys">
       <p>dodge</p>
       </div>
       <div>
-      <img src="../images/taco.png" alt="arrow keys">
+      <img src="./images/taco.png" alt="arrow keys">
       <p>collect</p>
       </div>
       <div>
-      <img src="../images/bomb.png" alt="arrow keys">
+      <img src="./images/bomb.png" alt="arrow keys">
       <p>removes all cars</p>
       </div>
       <div>
-      <img src="../images/pepper.png" alt="arrow keys">
+      <img src="./images/pepper.png" alt="arrow keys">
       <p>adds life</p>
       </div>
       </section>
@@ -62,7 +62,7 @@ function main() {
     <main class="game container">
       <header>
         <div class="lives">
-        <img class="image" src="../styles/pixel-heart-2779422_1280.png" alt="heart-image">
+        <img class="image" src="./styles/pixel-heart-2779422_1280.png" alt="heart-image">
           <span class="value"></span>
         </div>
 
