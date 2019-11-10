@@ -11,7 +11,7 @@ function Game() {
     this.gameIsOver = false;
     this.gameScreen = null;
     this.score = 0;
-    this.speed = 6;
+    this.speed = 6.5;
     this.pointArray = 0;
 }
 
@@ -52,7 +52,7 @@ Game.prototype.start = function() {
 Game.prototype.startLoop = function() {
     var loop = function() {
 
-        if (Math.random() > 0.98) {
+        if (Math.random() > 0.979) {
 
 
             var randomX = [70, 190, 310, 420, 530, 635];
@@ -71,7 +71,6 @@ Game.prototype.startLoop = function() {
                 this.cars.push(newCar)
             }
 
-            // this.cars.push(newCar)
 
 
         }
@@ -85,7 +84,7 @@ Game.prototype.startLoop = function() {
 
 
 
-        if (Math.random() > 0.992) {
+        if (Math.random() > 0.999) {
 
 
             var randomX = [109, 118, 155, 170, 200, 218, 256, 278, 303, 314, 327, 344, 377, 398, 410, 436, 460, 476, 500, 515, 535, 580, 545, 569, 580, 620, 654];
@@ -93,14 +92,14 @@ Game.prototype.startLoop = function() {
 
 
 
-            var newLives = new Lives(this.canvas, randomValue, 7.4);
+            var newLives = new Lives(this.canvas, randomValue, 7.5);
 
 
 
             this.livesArr.push(newLives)
         };
 
-        if (Math.random() > 0.97) {
+        if (Math.random() > 0.997) {
 
 
             var randomX = [109, 118, 155, 170, 200, 218, 256, 278, 303, 314, 327, 344, 377, 398, 410, 436, 460, 476, 500, 515, 535, 580, 545, 569, 580, 620, 654];
@@ -116,7 +115,7 @@ Game.prototype.startLoop = function() {
 
         };
 
-        if (Math.random() > 0.992) {
+        if (Math.random() > 0.999) {
 
 
             var randomX = [109, 118, 155, 170, 200, 218, 256, 278, 303, 314, 327, 344, 377, 398, 410, 436, 460, 476, 500, 515, 535, 580, 545, 569, 580, 620, 654];
@@ -124,7 +123,7 @@ Game.prototype.startLoop = function() {
 
 
 
-            var speedNew = new SpeedChange(this.canvas, randomValue, 5);
+            var speedNew = new SpeedChange(this.canvas, randomValue, 5.5);
 
 
 
